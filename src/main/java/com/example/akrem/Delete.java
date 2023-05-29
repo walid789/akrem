@@ -18,7 +18,7 @@ import java.sql.PreparedStatement;
 
 public class Delete extends Stage {
     public Delete(){
-        Label label = new Label("Enter libele du produit");
+        Label label = new Label("Enter the name of student");
         TextField textField = new TextField();
 
         Button button = new Button("Delete");
@@ -28,9 +28,9 @@ public class Delete extends Stage {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection connection = DriverManager.getConnection(
-                            "jdbc:mysql://localhost:3306/mydata", "root", ""
+                            "jdbc:mysql://localhost:3306/stud", "root", ""
                     );
-                    String sql = "DELETE FROM produit WHERE  libele=?";
+                    String sql = "DELETE FROM student WHERE  name=?";
                     PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setString(1, textField.getText());
 
@@ -38,7 +38,7 @@ public class Delete extends Stage {
                     if(rows==1){
                         admin adminPage = new admin();
                         adminPage.start(new Stage());
-                        System.out.println("produit supprimer avec succes");
+                        System.out.println("student supprimer avec succes");
                         close();
                     }
 

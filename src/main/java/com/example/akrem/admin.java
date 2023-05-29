@@ -9,11 +9,11 @@ public class admin extends Application {
     @Override
     public void start(Stage stage)  {
 
-        Button button1 = new Button("ADD PRODUCT");
+        Button button1 = new Button("ADD STUDENT");
         button1.setOnAction(e->add(stage));
-        Button button2 = new Button("DELETE PRODUCT");
+        Button button2 = new Button("DELETE STUDENT");
         button2.setOnAction(e->delete(stage));
-        Button button3 = new Button("UPDATE PRODUCT");
+        Button button3 = new Button("UPDATE STUDENT");
         button3.setOnAction(e->update(stage));
 
 

@@ -18,15 +18,15 @@ public class Update extends Stage {
     public  Update(){
 
     // Create labels, textfields, and button
-    Label label0 = new Label("libele du produit");
+    Label label0 = new Label("student name");
     TextField textField0 = new TextField();
 
     Button button0 = new Button("rechercher");
 
-    Label label1 = new Label("libel");
-    Label label2 = new Label("prix");
-    Label label3 = new Label("stock");
-    Label label4 = new Label("description ");
+    Label label1 = new Label("name");
+    Label label2 = new Label("age");
+    Label label3 = new Label("class");
+    Label label4 = new Label("phone ");
 
     TextField textField1 = new TextField();
     TextField textField2 = new TextField();
@@ -48,10 +48,10 @@ public class Update extends Stage {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/mydata", "root", ""
+                        "jdbc:mysql://localhost:3306/stud", "root", ""
                 );
                 Statement statement = connection.createStatement();
-                String req = "select * from produit where libele= ? ";
+                String req = "select * from student where name= ? ";
 
                 PreparedStatement stmt = connection.prepareStatement(req);
                 stmt.setString(1, textField0.getText());
@@ -76,9 +76,9 @@ public class Update extends Stage {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/mydata", "root", ""
+                        "jdbc:mysql://localhost:3306/stud", "root", ""
                 );
-                String sql = "update  produit set libele=? ,prix =?, stock =? , description=? where id=?";
+                String sql = "update  student set name=? ,age =?, class =? , phone=? where id=?";
                 PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setString(1, textField1.getText());
                 stmt.setString(2,textField2.getText() );
@@ -89,7 +89,7 @@ public class Update extends Stage {
                 if(rows==1){
                     admin adminPage = new admin();
                     adminPage.start(new Stage());
-                    System.out.println("produit update avec succes");
+                    System.out.println("student update avec succes");
                     close();
                 }
 

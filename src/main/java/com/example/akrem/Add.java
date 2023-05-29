@@ -16,25 +16,25 @@ import java.sql.PreparedStatement;
 
 public class Add extends Stage {
 public Add() {
-    Label label1 = new Label("libele");
-    Label label2 = new Label("stock");
-    Label label3 = new Label("prix");
-    Label label4 = new Label("description ");
+    Label label1 = new Label("name");
+    Label label2 = new Label("age");
+    Label label3 = new Label("classe");
+    Label label4 = new Label("phone number ");
 
     TextField textField1 = new TextField();
     TextField textField2 = new TextField();
     TextField textField3 = new TextField();
     TextField textField4 = new TextField();
-    Button b1 = new Button("Add the Trad");
+    Button b1 = new Button("Add the student");
     b1.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/mydata", "root", ""
+                        "jdbc:mysql://localhost:3306/stud", "root", ""
                 );
-                String sql = "INSERT INTO produit (libele ,prix,stock,description) VALUES (?, ?,?, ?)";
+                String sql = "INSERT INTO student (name,age,class,phone) VALUES (?, ?,?, ?)";
                 PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setString(1, textField1.getText());
                 stmt.setString(2, textField2.getText());
@@ -45,7 +45,7 @@ public Add() {
                 if (rows == 1) {
                     admin adminPage = new admin();
                     adminPage.start(new Stage());
-                    System.out.println("produit ajouter avec succes");
+                    System.out.println("student add successfully");
                     close();
                 }
 
@@ -71,7 +71,7 @@ public Add() {
     // Create scene and set it on the stage
     Scene scene = new Scene(gridPane, 400, 400);
     setScene(scene);
-    setTitle("ajouter produit");
+    setTitle("add student");
     show();
 }
 }
